@@ -1,4 +1,56 @@
 [
+
+  {
+    "type": 1,
+    "title": "Adguard",
+    "name": "adguard",
+    "description": "AdGuard Home is a network-wide software for blocking ads & tracking. After you set it up, it’ll cover ALL your home devices, and you don’t need any client-side software for that. With the rise of Internet-Of-Things and connected devices, it becomes more and more important to be able to control your whole network.",
+    "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/adguard.png",
+    "image": "adguard/adguardhome:latest",
+    "categories": [
+      "Music"
+    ],
+    "platform": "linux",
+    "restart_policy": "unless-stopped",
+    "ports": [
+      "53:53/tcp",
+      "53:53/udp",
+      "67:67/udp",
+      "68:68/tcp",
+      "68:68/udp",
+      "80:80/tcp",
+      "443:443/tcp",
+      "853:853/tcp",
+      "3000:3000/tcp"
+    ],
+    "volumes": [
+      {
+        "container": "/opt/adguardhome/work",
+        "bind": "/portainer/Files/AppData/Adguard/Workdir"
+      },
+      {
+        "container": "/opt/adguardhome/config",
+        "bind": "/portainer/Files/AppData/Adguard/Conf"
+      }
+    ],
+    "env": [
+      {
+        "name": "PUID",
+        "label": "PUID",
+        "default": "1000"
+      },
+      {
+        "name": "PGID",
+        "label": "PGID",
+        "default": "100"
+      },
+      {
+        "name": "CONTEXT_PATH",
+        "label": "CONTEXT_PATH",
+        "set": "adguard home"
+      }
+    ]
+  },
   {
     "type": 1,
     "title": "Airsonic",
